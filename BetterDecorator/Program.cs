@@ -10,10 +10,18 @@ namespace BetterDecorator
         /// <param name="args">string, char, int</param>
         static void Main(string[] args)
         {
-            string s = args[0];
-            char dec = char.Parse(args[1]);
-            int i = int.Parse(args[2]);
-            s = Decor(s,dec,i);
+            string s;
+            if (args.Length == 0)
+            {
+                s = Decor();
+            }
+            else
+            {
+                s = args[0];
+                char dec = char.Parse(args[1]);
+                int i = int.Parse(args[2]);
+                s = Decor(s,dec,i);
+            }
             Console.WriteLine(s);
         }
         /// <summary>
@@ -31,6 +39,14 @@ namespace BetterDecorator
             }
         
         return s;
+        }
+        /// <summary>
+        /// Caso o user não especifique nenhum arg.
+        /// </summary>
+        /// <returns></returns>
+        private static string Decor()
+        {
+            return Decor("User did not specify args!", '=', 3);
         }
 
     }
